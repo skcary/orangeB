@@ -9,5 +9,5 @@ middlewareRegister(app)
 
 const server = http.createServer(app.callback())
 server.listen(config.port, () => {
-    console.log('App started, bind port %d, CTRL + C to terminate', config.port)
+  console.log('App started, bind port %d, CTRL + C to terminate', config.port)
 })

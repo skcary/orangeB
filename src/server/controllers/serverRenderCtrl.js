@@ -28,5 +28,5 @@ export default async (ctx, next, renderProps) => {
     app: renderToString(<Provider store={store}>
       <RouterContext {...renderProps} />
     </Provider>)
-  })  
+  })
 }

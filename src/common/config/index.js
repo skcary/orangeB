@@ -1,6 +1,8 @@
+import path from 'path'
+
 export default {
-  title: "ORANGE · orange",
-  domain: "http://localhost",
+  title: 'ORANGE · orange',
+  domain: 'http://localhost',
   port: 3388,
   db: {
     dialect: 'sqlite',
