@@ -7,9 +7,9 @@ import koaOnError from 'koa-onerror'
 import convert from 'koa-convert'
 import Bodyparser from 'koa-bodyparser'
 import router from './routes'
-import config from '../common/config'
+import config from '../config'
 const bodyparser = Bodyparser()
-const templatePath = path.join(__dirname, './templates')
+const templatePath = path.join(__dirname, './views')
 
 export default (app) => {
   // reg middlewares

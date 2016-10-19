@@ -1,7 +1,7 @@
 import Koa from 'koa'
 import middlewareRegister from './middlewareRegister'
 import http from 'http'
-import config from '../common/config'
+import config from '../config'
 
 const app = new Koa()
 app.env = 'production'

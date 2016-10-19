@@ -2,7 +2,7 @@ import React from 'react'
 import { RouterContext } from 'react-router'
 import { renderToString } from 'react-dom/server'
 import { Provider } from 'react-redux'
-import config from '../../common/config'
+import config from '../../config'
 import configureStore from '../../../app/store/configureStore'
 const store = configureStore()
 

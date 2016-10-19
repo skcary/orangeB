@@ -9,7 +9,7 @@ export const MIRROR_STATE_REQUEST = 'MIRROR_STATE_REQUEST'
 export const MIRROR_STATE_SUCCEED = 'MIRROR_STATE_SUCCEED'
 export const MIRROR_STATE_FAILED = 'MIRROR_STATE_FAILED'
 
-const fetchStateUrl = __SERVER__ ? `http://localhost:${require('../../platforms/common/config').port}/api/state` : '/api/state'
+const fetchStateUrl = __SERVER__ ? `http://localhost:${require('../../config').port}/api/state` : '/api/state'
 function fetchState() {
   return dispatch => {
     dispatch(mirrorStateRequest())
