@@ -58,6 +58,7 @@
     "lodash": "^4.11.1",
     "marked": "^0.3.5",
     "moment": "^2.13.0",
+    "node-uuid": "^1.4.7",
     "normalize.css": "^4.1.1",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",

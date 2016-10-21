@@ -1,11 +1,10 @@
 import {Order, OrderMore} from './db'
 import config from '../../config'
 
-const createOrder = async (orderid, userid, totalprice, ordermorelist, createtime=new Date()) => {
+const createOrder = async (orderid, userid, totalprice, ordermorelist, createtime = new Date()) => {
   await Order.create({
     orderid: orderid,
     userid: userid,
-    author: author,
     totalprice: totalprice,
     createtime: createtime
   })
@@ -38,19 +37,19 @@ const findOrderByPage = async (page) => {
   // select order table
   let limit = config.orderPageCount
   let orderlist = await Order.findAndCountAll({
-     where: {},
-     offset: (page - 1) * limit,
-     limit: limit,
-     order: [['createtime', 'DESC']]
+    where: {},
+    offset: (page - 1) * limit,
+    limit: limit,
+    order: [['createtime', 'DESC']]
   })
-  
-  //select ordermore table
+
+  // select ordermore table
   orderlist.map((item) => {
     item.ordermorelist = await OrderMore.findAll({
       where: {orderid: item.orderid}
     })
   })
-  return orderlist;
+  return orderlist
 }
 
 export default {
