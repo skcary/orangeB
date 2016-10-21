@@ -11,7 +11,7 @@ const createStoreWithMiddleware = applyMiddleware(
   thunk
 )(createStore)
 
-export default function configureStore(initialState) {
+export default function configureStore (initialState) {
   const store = createStoreWithMiddleware(rootReducer, initialState,
     typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f)
 

@@ -9,6 +9,8 @@ const createOrder = async (orderid, userid, totalprice, ordermorelist, createtim
     totalprice: totalprice,
     createtime: createtime
   })
+
+  /*eslint-disable no-alert, no-console */
   ordermorelist.map((item) => {
     await OrderMore.create({
       orderid: orderid,
@@ -17,6 +19,7 @@ const createOrder = async (orderid, userid, totalprice, ordermorelist, createtim
       unitprice: item.unitprice
     })
   })
+  /*eslint-enable */
 }
 
 const updateOrderSatusById = async (id, status) => {

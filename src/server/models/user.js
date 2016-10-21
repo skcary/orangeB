@@ -9,7 +9,7 @@ const getUserByName = async (name) => {
   await User.findOne({ where: {name: name} })
 }
 
-const createUser = async (name, password, avater='', phone='', email='', addr='') => {
+const createUser = async (name, password, avater = '', phone = '', email = '', addr = '') => {
   await User.create({
     name: name,
     password: password,
@@ -29,7 +29,7 @@ const updateUser = async (id, password, avater, phone, email, addr) => {
     email: email,
     addr: addr
   }, {
-    where : {id: id}
+    where: {id: id}
   })
 }
 

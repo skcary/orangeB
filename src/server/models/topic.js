@@ -1,7 +1,7 @@
 import {Topic} from './db'
 import config from '../../config'
 
-const createTopic = async (title, thumb, desc, content, author, tags='', createtime=new Date()) => {
+const createTopic = async (title, thumb, desc, content, author, tags = '', createtime = new Date()) => {
   await Topic.create({
     title: title,
     thumb: thumb,
@@ -13,7 +13,7 @@ const createTopic = async (title, thumb, desc, content, author, tags='', createt
   })
 }
 
-const updateTopic = async (id, title, thumb, desc, content, author, tags='', updatetime=new Date()) => {
+const updateTopic = async (id, title, thumb, desc, content, author, tags = '', updatetime = new Date()) => {
   await Topic.update({
     title: title,
     thumb: thumb,
@@ -33,11 +33,11 @@ const findTopicById = async (id) => {
 const findTopicByPage = async (page) => {
   let limit = config.topicPageCount
   await Topic.findAndCountAll({
-     where: {},
-     attributes: ['id', 'title', 'thumb', 'desc', 'author', 'updatetime'],
-     offset: (page - 1) * limit,
-     limit: limit,
-     order: [['updatetime', 'DESC']]
+    where: {},
+    attributes: ['id', 'title', 'thumb', 'desc', 'author', 'updatetime'],
+    offset: (page - 1) * limit,
+    limit: limit,
+    order: [['updatetime', 'DESC']]
   })
 }
 

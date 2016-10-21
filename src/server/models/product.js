@@ -1,7 +1,7 @@
 import {Product} from './db'
 import config from '../../config'
 
-const createProduct = async (title, thumb, desc, content, owner, price, priceoff, sellstart=new Date(), sellend=new Date(), createtime=new Date()) => {
+const createProduct = async (title, thumb, desc, content, owner, price, priceoff, sellstart = new Date(), sellend = new Date(), createtime = new Date()) => {
   await Product.create({
     title: title,
     thumb: thumb,
@@ -16,7 +16,7 @@ const createProduct = async (title, thumb, desc, content, owner, price, priceoff
   })
 }
 
-const updateProduct = async (id, title, thumb, desc, content, owner, price, priceoff, sellstart=new Date(), sellend=new Date()) => {
+const updateProduct = async (id, title, thumb, desc, content, owner, price, priceoff, sellstart = new Date(), sellend = new Date()) => {
   await Product.update({
     title: title,
     thumb: thumb,
@@ -39,11 +39,11 @@ const findProductById = async (id) => {
 const findProductByPage = async (page) => {
   let limit = config.productPageCount
   await Product.findAndCountAll({
-     where: {}, //later: 去掉下架的商品
-     attributes: ['id', 'title', 'thumb', 'desc', 'owner', 'price', 'priceoff'],
-     offset: (page - 1) * limit,
-     limit: limit,
-     Product: [['createtime', 'DESC']]
+    where: {}, // later: 去掉下架的商品
+    attributes: ['id', 'title', 'thumb', 'desc', 'owner', 'price', 'priceoff'],
+    offset: (page - 1) * limit,
+    limit: limit,
+    Product: [['createtime', 'DESC']]
   })
 }
 

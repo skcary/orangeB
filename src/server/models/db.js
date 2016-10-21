@@ -7,12 +7,12 @@ const database = new Sequelize(config.db.database, config.db.username, config.db
   logging: false
 })
 
-//product: id title thumb desc content price priceoff sellstart sellend
+// product: id title thumb desc content price priceoff sellstart sellend
 export const Product = database.define('product', {
   id: {
     type: Sequelize.INTEGER.UNSIGNED,
     primaryKey: true,
-    autoIncrement: true,
+    autoIncrement: true
   },
   title: Sequelize.STRING,
   thumb: Sequelize.STRING,
@@ -32,7 +32,7 @@ export const Product = database.define('product', {
   createtime: Sequelize.DATE
 })
 
-//order: id orderid userid totalprice status createtime
+// order: id orderid userid totalprice status createtime
 export const Order = database.define('order', {
   id: {
     type: Sequelize.INTEGER.UNSIGNED,
@@ -56,7 +56,7 @@ export const Order = database.define('order', {
   createtime: Sequelize.DATE
 })
 
-//ordermore: id orderid productid count unitprice
+// ordermore: id orderid productid count unitprice
 export const OrderMore = database.define('ordermore', {
   id: {
     type: Sequelize.INTEGER.UNSIGNED,
@@ -81,7 +81,7 @@ export const OrderMore = database.define('ordermore', {
   unitprice: Sequelize.NUMBER
 })
 
-//topic: id title thumb desc tags content createtime updatetime author
+// topic: id title thumb desc tags content createtime updatetime author
 export const Topic = database.define('topic', {
   id: {
     type: Sequelize.INTEGER.UNSIGNED,
@@ -104,7 +104,7 @@ export const Topic = database.define('topic', {
   }
 })
 
-//user: id name password avater phone email addr token permission
+// user: id name password avater phone email addr token permission
 export const User = database.define('user', {
   id: {
     type: Sequelize.INTEGER.UNSIGNED,
@@ -126,7 +126,7 @@ export const User = database.define('user', {
   token: Sequelize.UUID,
   permission: {
     type: Sequelize.ENUM,
-    values: [ 'ADMIN', 'CUSTOMER'],
+    values: ['ADMIN', 'CUSTOMER'],
     defaultValue: 'CUSTOMER'
   }
 })
