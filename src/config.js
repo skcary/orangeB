@@ -10,5 +10,8 @@ export default {
     storage: path.join(__dirname, './server/models/db/db.sqlite')
   },
   rootPath: '../../..',
-  publicPath: '/public'
+  publicPath: '/public',
+  topicPageCount: 20, //每页多少条
+  productPageCount: 30, //每页多少条
+  orderPageCount: 5
 }
