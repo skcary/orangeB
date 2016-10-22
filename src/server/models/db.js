@@ -119,6 +119,7 @@ export const User = database.define('user', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  nickname: Sequelize.STRING,
   avater: Sequelize.STRING,
   phone: Sequelize.STRING,
   email: Sequelize.STRING,

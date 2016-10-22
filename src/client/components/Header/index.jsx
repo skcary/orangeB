@@ -5,7 +5,7 @@
  */
 import React, { Component, PropTypes} from 'react'
 import { Menu } from 'antd'
-import { Link } from 'react-router'
+import { Link, IndexLink } from 'react-router'
 import './header.less'
 import logo from './logo.png'
 
@@ -26,7 +26,7 @@ export default class Header extends Component {
       <h2>重庆邮电大学 · 镜像源</h2>
       <Menu mode="horizontal" selectedKeys={[current]}>
         <MenuItem key="home">
-          <Link to="/">首页</Link>
+          <IndexLink to="/">首页</IndexLink>
         </MenuItem>
         <MenuItem key="events">
           <Link to="/events">事件通告</Link>

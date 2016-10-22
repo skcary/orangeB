@@ -9,10 +9,11 @@ const getUserByName = async (name) => {
   await User.findOne({ where: {name: name} })
 }
 
-const createUser = async (name, password, avater = '', phone = '', email = '', addr = '') => {
+const createUser = async (name, password, nickname, avater = '', phone = '', email = '', addr = '') => {
   await User.create({
     name: name,
     password: password,
+    nickname: nickname,
     avater: avater,
     phone: phone,
     email: email,
@@ -21,9 +22,10 @@ const createUser = async (name, password, avater = '', phone = '', email = '', a
   })
 }
 
-const updateUser = async (id, password, avater, phone, email, addr) => {
+const updateUser = async (id, password, nickname, avater, phone, email, addr) => {
   await User.update({
     password: password,
+    nickname: nickname,
     avater: avater,
     phone: phone,
     email: email,
