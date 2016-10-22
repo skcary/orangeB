@@ -6,32 +6,34 @@ const getUserById = async (id) => {
 }
 
 const getUserByName = async (name) => {
-  await User.findOne({ where: {name: name} })
+  await User.findOne({ where: { name } })
 }
 
 const createUser = async (name, password, nickname, avater = '', phone = '', email = '', addr = '') => {
   await User.create({
-    name: name,
-    password: password,
-    nickname: nickname,
-    avater: avater,
-    phone: phone,
-    email: email,
-    addr: addr,
+    name,
+    password,
+    nickname,
+    avater,
+    phone,
+    email,
+    addr,
     token: UUID.v4()
   })
 }
 
 const updateUser = async (id, password, nickname, avater, phone, email, addr) => {
   await User.update({
-    password: password,
-    nickname: nickname,
-    avater: avater,
-    phone: phone,
-    email: email,
-    addr: addr
+    password,
+    nickname,
+    avater,
+    phone,
+    email,
+    addr
   }, {
-    where: {id: id}
+    where: {
+      id
+    }
   })
 }
 

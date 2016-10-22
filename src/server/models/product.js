@@ -3,32 +3,34 @@ import config from '../../config'
 
 const createProduct = async (title, thumb, desc, content, owner, price, priceoff, sellstart = new Date(), sellend = new Date(), createtime = new Date()) => {
   await Product.create({
-    title: title,
-    thumb: thumb,
-    desc: desc,
-    content: content,
-    owner: owner,
-    price: price,
-    priceoff: priceoff,
-    sellstart: sellstart,
-    sellend: sellend,
-    createtime: createtime
+    title,
+    thumb,
+    desc,
+    content,
+    owner,
+    price,
+    priceoff,
+    sellstart,
+    sellend,
+    createtime
   })
 }
 
 const updateProduct = async (id, title, thumb, desc, content, owner, price, priceoff, sellstart = new Date(), sellend = new Date()) => {
   await Product.update({
-    title: title,
-    thumb: thumb,
-    desc: desc,
-    content: content,
-    owner: owner,
-    price: price,
-    priceoff: priceoff,
-    sellstart: sellstart,
-    sellend: sellend
+    title,
+    thumb,
+    desc,
+    content,
+    owner,
+    price,
+    priceoff,
+    sellstart,
+    sellend
   }, {
-    where: { id: id }
+    where: {
+      id
+    }
   })
 }
 
@@ -48,7 +50,7 @@ const findProductByPage = async (page) => {
 }
 
 const delProductById = async (id) => {
-  await Product.destroy({id: id})
+  await Product.destroy({ id })
 }
 
 export default {

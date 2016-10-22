@@ -3,26 +3,28 @@ import config from '../../config'
 
 const createTopic = async (title, thumb, desc, content, author, tags = '', createtime = new Date()) => {
   await Topic.create({
-    title: title,
-    thumb: thumb,
-    desc: desc,
-    author: author,
-    tags: tags,
-    createtime: createtime,
+    title,
+    thumb,
+    desc,
+    author,
+    tags,
+    createtime,
     updatetime: createtime
   })
 }
 
 const updateTopic = async (id, title, thumb, desc, content, author, tags = '', updatetime = new Date()) => {
   await Topic.update({
-    title: title,
-    thumb: thumb,
-    desc: desc,
-    author: author,
-    tags: tags,
-    updatetime: updatetime
+    title,
+    thumb,
+    desc,
+    author,
+    tags,
+    updatetime
   }, {
-    where: { id: id }
+    where: {
+      id
+    }
   })
 }
 
@@ -42,7 +44,7 @@ const findTopicByPage = async (page) => {
 }
 
 const delTopicById = async (id) => {
-  await Topic.destroy({id: id})
+  await Topic.destroy({ id })
 }
 
 export default {

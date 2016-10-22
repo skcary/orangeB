@@ -3,16 +3,16 @@ import config from '../../config'
 
 const createOrder = async (orderid, userid, totalprice, ordermorelist, createtime = new Date()) => {
   await Order.create({
-    orderid: orderid,
-    userid: userid,
-    totalprice: totalprice,
-    createtime: createtime
+    orderid,
+    userid,
+    totalprice,
+    createtime
   })
 
   /*eslint-disable no-alert, no-console */
   ordermorelist.map((item) => {
     await OrderMore.create({
-      orderid: orderid,
+      orderid,
       productid: item.productid,
       count: item.count,
       unitprice: item.unitprice
@@ -23,9 +23,11 @@ const createOrder = async (orderid, userid, totalprice, ordermorelist, createtim
 
 const updateOrderSatusById = async (id, status) => {
   await Order.update({
-    status: status
+    status
   }, {
-    where: { id: id }
+    where: {
+      id
+    }
   })
 }
 
