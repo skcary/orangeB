@@ -1,7 +1,7 @@
 import {Goods} from './db'
 import config from '../../config'
 
-const createGoods = async (title, thumb, desc, content, owner, price, priceoff, sellstart = new Date(), sellend = new Date(), createtime = new Date()) => {
+const createGoods = async (title, thumb, desc, content, owner, price, priceoff, status = 'NORMAL', createtime = new Date()) => {
   await Goods.create({
     title,
     thumb,
@@ -10,13 +10,12 @@ const createGoods = async (title, thumb, desc, content, owner, price, priceoff, 
     owner,
     price,
     priceoff,
-    sellstart,
-    sellend,
+    status,
     createtime
   })
 }
 
-const updateGoods = async (id, title, thumb, desc, content, owner, price, priceoff, sellstart = new Date(), sellend = new Date()) => {
+const updateGoods = async (id, title, thumb, desc, content, owner, price, priceoff, status = 'NORMAL') => {
   await Goods.update({
     title,
     thumb,
@@ -25,8 +24,7 @@ const updateGoods = async (id, title, thumb, desc, content, owner, price, priceo
     owner,
     price,
     priceoff,
-    sellstart,
-    sellend
+    status
   }, {
     where: {
       id

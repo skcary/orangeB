@@ -9,7 +9,7 @@ const getUserByName = async (name) => {
   await User.findOne({ where: { name } })
 }
 
-const createUser = async (name, password, nickname, avater = '', phone = '', email = '', addr = '') => {
+const createUser = async (name, password, nickname, avater = '', phone = '', email = '', addr = '', createtime = new Date()) => {
   await User.create({
     name,
     password,
@@ -18,7 +18,8 @@ const createUser = async (name, password, nickname, avater = '', phone = '', ema
     phone,
     email,
     addr,
-    token: UUID.v4()
+    token: UUID.v4(),
+    createtime
   })
 }
 

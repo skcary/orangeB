@@ -7,7 +7,7 @@ export default {
   db: {
     dialect: 'sqlite',
     database: 'main',
-    storage: path.join(__dirname, './server/models/db/db.sqlite')
+    storage: path.join(__dirname, './server/models/database/db.sqlite')
   },
   rootPath: '../../..',
   publicPath: '/public',

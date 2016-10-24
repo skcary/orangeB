@@ -27,13 +27,16 @@ export const Goods = database.define('goods', {
   },
   price: Sequelize.NUMBER,
   priceoff: Sequelize.NUMBER,
-  sellstart: Sequelize.DATE,
-  sellend: Sequelize.DATE,
+  status: {
+    type: Sequelize.ENUM,
+    values: ['SELLOUT', 'NORMAL'],
+    defaultValue: 'NORMAL'
+  },
   createtime: Sequelize.DATE
 })
 
 // order: id orderid userid totalprice status createtime
-export const Order = database.define('order', {
+export const Order = database.define('order_list', {
   id: {
     type: Sequelize.INTEGER.UNSIGNED,
     primaryKey: true,
@@ -57,7 +60,7 @@ export const Order = database.define('order', {
 })
 
 // ordermore: id orderid goodsid count unitprice
-export const OrderMore = database.define('ordermore', {
+export const OrderMore = database.define('order_item', {
   id: {
     type: Sequelize.INTEGER.UNSIGNED,
     primaryKey: true,
@@ -129,7 +132,8 @@ export const User = database.define('user', {
     type: Sequelize.ENUM,
     values: ['ADMIN', 'CUSTOMER'],
     defaultValue: 'CUSTOMER'
-  }
+  },
+  createtime: Sequelize.DATE
 })
 
 Promise.all([Goods.sync(), Order.sync(), OrderMore.sync(), Topic.sync(), User.sync()]).then(() => {
