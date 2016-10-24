@@ -13,7 +13,7 @@ const createOrder = async (orderid, userid, totalprice, ordermorelist, createtim
   ordermorelist.map((item) => {
     await OrderMore.create({
       orderid,
-      productid: item.productid,
+      goodsid: item.goodsid,
       count: item.count,
       unitprice: item.unitprice
     })

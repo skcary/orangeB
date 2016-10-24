@@ -1,19 +1,21 @@
-/**
- * Created at 16/5/17.
- * @Author Ling.
- * @Email i@zeroling.com
- */
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import rootReducer from '../reducers'
+import logger from 'redux-logger'
+import reducer from './reducers'
 
-const createStoreWithMiddleware = applyMiddleware(
-  thunk
-)(createStore)
+const middleware = [ thunk ]
+if (process.env.NODE_ENV !== 'production') {
+  middleware.push(logger())
+}
+
+const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore)
 
 export default function configureStore (initialState) {
-  const store = createStoreWithMiddleware(rootReducer, initialState,
-    typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f)
+  const store = createStoreWithMiddleware(
+    reducer,
+    initialState,
+    typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : f => f
+  )
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {

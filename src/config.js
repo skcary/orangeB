@@ -12,6 +12,6 @@ export default {
   rootPath: '../../..',
   publicPath: '/public',
   topicPageCount: 20, // 每页多少条
-  productPageCount: 30, // 每页多少条
+  goodsPageCount: 30, // 每页多少条
   orderPageCount: 5
 }
