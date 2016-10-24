@@ -1,36 +1,3 @@
-CREATE TABLE goods(
-   id         INT        NOT NULL,
-   title      STRING     NOT NULL,
-   thumb      STRING     NOT NULL,
-   desc       STRING,
-   content    TEXT,       
-   owner      INT,
-   price      NUMBERIC,
-   priceoff   NUMBERIC,
-   status     STRING,
-   createtime DATE,
-   PRIMARY KEY( id )
-);
-
-CREATE TABLE order_list(
-   id         INT        NOT NULL,
-   orderid    STRING     NOT NULL,
-   userid     INT        NOT NULL,
-   status     STRING,
-   totalprice NUMBERIC,
-   createtime DATE,
-   PRIMARY KEY( id )
-);
-
-CREATE TABLE order_item(
-   id         INT        NOT NULL,
-   orderid    STRING     NOT NULL,
-   goodsid    INT        NOT NULL,
-   count      INT,
-   unitprice  NUMBERIC,
-   PRIMARY KEY( id )
-);
-
 CREATE TABLE user(
    id         INT        NOT NULL,
    name       STRING     NOT NULL,
@@ -44,4 +11,55 @@ CREATE TABLE user(
    permission STRING,
    createtime DATE,
    PRIMARY KEY( id )
+);
+
+CREATE TABLE goods(
+   id         INT        NOT NULL,
+   title      STRING     NOT NULL,
+   thumb      STRING     NOT NULL,
+   desc       STRING,
+   content    TEXT,       
+   owner      INT,
+   price      NUMBERIC,
+   priceoff   NUMBERIC,
+   status     STRING,
+   createtime DATE,
+   PRIMARY KEY( id ),
+   FOREIGN KEY (owner) REFERENCES user(id)
+);
+
+CREATE TABLE orders(
+   id         INT        NOT NULL,
+   orderid    STRING     NOT NULL,
+   userid     INT        NOT NULL,
+   status     STRING,
+   totalprice NUMBERIC,
+   createtime DATE,
+   PRIMARY KEY( id ),
+   FOREIGN KEY (userid) REFERENCES user(id)
+);
+
+CREATE TABLE orders_item(
+   id         INT        NOT NULL,
+   orderid    STRING     NOT NULL,
+   goodsid    INT        NOT NULL,
+   count      INT,
+   unitprice  NUMBERIC,
+   PRIMARY KEY( id ),
+   FOREIGN KEY (orderid) REFERENCES orders(orderid),
+   FOREIGN KEY (goodsid) REFERENCES goods(id)
+);
+
+CREATE TABLE topic(
+   id         INT        NOT NULL,
+   title      STRING     NOT NULL,
+   thumb      STRING        NOT NULL,
+   desc       STRING,
+   tags       STRING,
+   content    TEXT,
+   createtime DATE,
+   updatetime DATE,
+   author     INT,
+   PRIMARY KEY( id ),
+   FOREIGN KEY (author) REFERENCES user(id)
 );

@@ -7,6 +7,35 @@ const database = new Sequelize(config.db.database, config.db.username, config.db
   logging: false
 })
 
+// user: id name password avater phone email addr token permission
+export const User = database.define('user', {
+  id: {
+    type: Sequelize.INTEGER.UNSIGNED,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  name: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  password: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  nickname: Sequelize.STRING,
+  avater: Sequelize.STRING,
+  phone: Sequelize.STRING,
+  email: Sequelize.STRING,
+  addr: Sequelize.STRING,
+  token: Sequelize.UUID,
+  permission: {
+    type: Sequelize.ENUM,
+    values: ['ADMIN', 'CUSTOMER'],
+    defaultValue: 'CUSTOMER'
+  },
+  createtime: Sequelize.DATE
+})
+
 // goods: id title thumb desc content price priceoff sellstart sellend
 export const Goods = database.define('goods', {
   id: {
@@ -36,7 +65,7 @@ export const Goods = database.define('goods', {
 })
 
 // order: id orderid userid totalprice status createtime
-export const Order = database.define('order_list', {
+export const Order = database.define('orders', {
   id: {
     type: Sequelize.INTEGER.UNSIGNED,
     primaryKey: true,
@@ -60,7 +89,7 @@ export const Order = database.define('order_list', {
 })
 
 // ordermore: id orderid goodsid count unitprice
-export const OrderMore = database.define('order_item', {
+export const OrderMore = database.define('orders_item', {
   id: {
     type: Sequelize.INTEGER.UNSIGNED,
     primaryKey: true,
@@ -107,35 +136,6 @@ export const Topic = database.define('topic', {
   }
 })
 
-// user: id name password avater phone email addr token permission
-export const User = database.define('user', {
-  id: {
-    type: Sequelize.INTEGER.UNSIGNED,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  password: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  nickname: Sequelize.STRING,
-  avater: Sequelize.STRING,
-  phone: Sequelize.STRING,
-  email: Sequelize.STRING,
-  addr: Sequelize.STRING,
-  token: Sequelize.UUID,
-  permission: {
-    type: Sequelize.ENUM,
-    values: ['ADMIN', 'CUSTOMER'],
-    defaultValue: 'CUSTOMER'
-  },
-  createtime: Sequelize.DATE
-})
-
-Promise.all([Goods.sync(), Order.sync(), OrderMore.sync(), Topic.sync(), User.sync()]).then(() => {
+Promise.all([User.sync(), Goods.sync(), Order.sync(), OrderMore.sync(), Topic.sync()]).then(() => {
   console.log('All tables have synced!')
 })
