@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-fetch'
 
-export const CHANGE_STATUS = 'CHANGE_STATUS' // list details
-export const CHANGE_PAGE = 'CHANGE_PAGE'
+export const TOPIC_CHANGE_STATUS = 'TOPIC_CHANGE_STATUS' // list details
+export const TOPIC_CHANGE_PAGE = 'TOPIC_CHANGE_PAGE'
 
 export const REQUEST_TOPIC_START = 'REQUEST_TOPIC_START'
 export const REQUEST_TOPIC_SUCCESS = 'REQUEST_TOPIC_SUCCESS'
@@ -12,12 +12,12 @@ export const REQUEST_TOPICS_SUCCESS = 'REQUEST_TOPICS_SUCCESS'
 export const REQUEST_TOPICS_ERROR = 'REQUEST_TOPICS_ERROR'
 
 export const changeStatus = status => ({
-  type: CHANGE_STATUS,
+  type: TOPIC_CHANGE_STATUS,
   status
 })
 
 export const changePage = (status, page) => ({
-  type: CHANGE_PAGE,
+  type: TOPIC_CHANGE_PAGE,
   status,
   page
 })
